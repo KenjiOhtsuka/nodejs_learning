@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <!-- react -->
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+
+    <!-- babel -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+    class ComponentClock extends React.Component {
+        constructor(props) {
+            super(props)
+
+            this.state = {
+                now: (new Date())
+            }
+
+            setInterval(
+                e => {this.setState(({now: (new Date())}))}, 1000
+            )
+        }
+
+        render () {
+            const now = this.state.now
+            const hh = this.fmt(now.getHours())
+            const mm = this.fmt(now.getMinutes())
+            const ss = this.fmt(now.getSeconds())
+
+            return <div>{hh}:{mm}:{ss}</div>
+        }
+
+        fmt(v) {
+            const s = "0" + v
+            return s.substr(s.length - 2, 2)
+        }
+    }
+
+    ReactDOM.render(
+        <div><ComponentClock/></div>,
+        document.getElementById('root')
+    )
+
+</script>
+</body>
+</html>
