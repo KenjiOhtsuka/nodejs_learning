@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <!-- react -->
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+
+    <!-- babel -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        setInterval(showClock, 1000)
+        const style = {'fontSize': 'larger'}
+
+        function showClock() {
+            const d = new Date()
+            const hour = d.getHours()
+            const min = d.getMinutes()
+            const sec = d.getSeconds()
+            const elem = <div style={style}>
+                {hour}:{min}:{sec}
+            </div>
+            ReactDOM.render(elem, document.getElementById('root'))
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <!-- react -->
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+
+    <!-- babel -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+    setInterval(update, 1000)
+
+    function update() {
+        const now = new Date()
+        let [hh, mm, dd] = [
+            now.getHours(),
+            now.getMinutes(),
+            now.getSeconds()
+        ];
+        let cv = (hh * 2 ** 8 + mm) * 2 ** 8 + dd;
+
+        const digits = [];
+        const lines = [];
+
+        for (let i = 0; i < 8 * 3; ++i) {
+            if (cv % 2 === 1) digits.push(1);
+            else digits.push(0);
+            cv >>= 1;
+        }
+
+        digits.reverse();
+
+        for (let j in digits) {
+            switch (digits[j]) {
+                case 1:
+                    lines.push(<span>X</span>);
+                    break;
+                default:
+                    lines.push(<span>O</span>);
+            }
+            if (j % 4 === 3) lines.push(<br />);
+        }
+
+        const disp = document.getElementById('root');
+        ReactDOM.render(<div style={{fontSize: 'larger'}}>{lines}</div>, disp)
+    }
+</script>
+</body>
+</html>
