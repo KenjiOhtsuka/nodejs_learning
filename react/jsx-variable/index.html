@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <!-- react -->
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+
+    <!-- babel -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        const item = 'Manga'
+        const value = 1200
+        const style = {color:'red'}
+
+        const msg = <h1 style={style}>{item} - {value} JPY</h1>
+
+        const elm = document.getElementById('root')
+
+        ReactDOM.render(msg, elm)
+    </script>
+</body>
+</html>

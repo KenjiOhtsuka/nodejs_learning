@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <!-- react -->
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+
+    <!-- babel -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="disp"></div>
+    <script type="text/babel">
+        const root = document.querySelector('#disp')
+        const msg = getMessage()
+        ReactDOM.render(msg, root)
+
+        function getMessage() {
+            const r = Math.floor(Math.random() * 6)
+
+            switch (r) {
+                case 1: return <p>One</p>
+                case 2: return <p>Two</p>
+                case 3: return <p>Three</p>
+                case 4: return <p>Four</p>
+                case 5: return <p>Five</p>
+                default: return <p>Six</p>
+            }
+        }
+    </script>
+</body>
+</html>
