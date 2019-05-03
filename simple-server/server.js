@@ -4,7 +4,6 @@ const svr = http.createServer(handler)
 
 svr.listen(8081)
 
-
 function handler (req, res) {
     console.log('url:', req.url)
     console.log('method:', req.method)
