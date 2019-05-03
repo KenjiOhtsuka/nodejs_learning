@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <!-- react -->
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+
+    <!-- babel -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        class CBox extends React.Component {
+            constructor (props) {
+                super(props)
+                this.state = {checked: false}
+            }
+            render() {
+                let mark = '[ ]'
+                let bStyle = {fontWeight: 'normal'}
+
+                if (this.state.checked) {
+                    mark = '[X]'
+                    bStyle = {fontWeight: 'bold'}
+                }
+
+                const clickHandler = (e) => {
+                    const newValue = !this.state.checked
+                    this.setState({checked: newValue})
+                }
+
+                return (
+                    <div onClick={clickHandler} style={bStyle}>
+                        {mark} {this.props.label}
+                    </div>
+                )
+            }
+        }
+        const dom = <div>
+            <CBox label="A"/>
+            <CBox label="B"/>
+            <CBox label="C"/>
+            <CBox label="D"/>
+        </div>
+        ReactDOM.render(
+            dom, document.getElementById('root')
+        )
+    </script>
+</body>
+</html>
